@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hashing-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashing-service
+  template:
+    metadata:
+      labels:
+        app: hashing-service
+    spec:
+      containers:
+      - name: hashing-service
+        image: azeezmain/hashing_service:latest
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: hashing-service-config
