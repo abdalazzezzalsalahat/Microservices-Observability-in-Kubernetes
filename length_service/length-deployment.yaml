@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: length-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: length-service
+  template:
+    metadata:
+      labels:
+        app: length-service
+    spec:
+      containers:
+      - name: length-service
+        image: azeezmain/length_service:latest
+        ports:
+        - containerPort: 8001
+        envFrom:
+        - configMapRef:
+            name: length-service-config
