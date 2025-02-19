@@ -6,9 +6,12 @@ from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.exporter.jaeger.thrift import JaegerExporter
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from prometheus_fastapi_instrumentator import Instrumentator
 
 
 app = FastAPI()
+
+Instrumentator().instrument(app).expose(app)
 
 logging.basicConfig(level=logging.INFO)
 
