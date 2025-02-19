@@ -3,3 +3,4 @@ pydantic
 opentelemetry-api
 opentelemetry-sdk
 opentelemetry-exporter-jaeger
+prometheus-fastapi-instrumentator
