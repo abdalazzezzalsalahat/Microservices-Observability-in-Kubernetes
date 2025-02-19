@@ -1,0 +1,22 @@
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+
+# Thumbnails
+._*
+_*
+
+# Logs
+logs
+*.log
+
+# dotenv environment variables file
+.env
+
+.venv
+
+
+
+
+
