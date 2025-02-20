@@ -41,18 +41,19 @@ Both services are containerized and deployed on Kubernetes, integrated with a co
 
 ```bash
 minikube start
-eval $(minikube docker-env)  # Configure Docker to use Minikube's environment
+
+kubectl cluster-info
 ```
 
 ### 2. Build & Load Docker Images
 
 ```bash
 
-docker build -t azeezmain/hashing-service:latest ./hashing_service
-docker build -t azeezmain/length-service:latest ./length_service
+docker build -t docker_username/hashing-service:latest ./hashing_service
+docker build -t docker_username/length-service:latest ./length_service
 
-docker push azeezmain/hashing-service:latest 
-docker push azeezmain/length-service:latest
+docker push docker_username/hashing-service:latest 
+docker push docker_username/length-service:latest
 
 ```
 
@@ -62,7 +63,7 @@ docker push azeezmain/length-service:latest
 
 chmod +x deploy.sh
 ./deploy.sh
-(Your deploy.sh script should contain all the kubectl apply commands from steps 3, 4, and 5).
+
 ```
 
 ### OR Manual Deployment
@@ -73,30 +74,34 @@ chmod +x deploy.sh
 
 kubectl apply -f hashing_service/hashing-config.yaml
 kubectl apply -f length_service/length-config.yaml
-kubectl apply -f observability/otel-configmap.yaml # For OpenTelemetry configuration
-kubectl apply -f observability/prometheus-configmap.yaml # For Prometheus Config
+kubectl apply -f observability/otel-configmap.yaml
+kubectl apply -f observability/prometheus-configmap.yaml
 ```
 
 #### 2. Deploy Microservices
 
 ```Bash
 
-kubectl apply -f hashing_service/hashing-deployment.yaml
-kubectl apply -f hashing_service/hashing-service.yaml
-kubectl apply -f length_service/length-deployment.yaml
-kubectl apply -f length_service/length-service.yaml
+cd hashing_service
+kubectl apply -f hashing-deployment.yaml
+kubectl apply -f hashing-service.yaml
+
+cd ../length_service
+kubectl apply -f length-deployment.yaml
+kubectl apply -f length-service.yaml
 ```
 
 #### 3. Deploy Observability Stack
 
 ```Bash
 
-kubectl apply -f observability/otel-collector.yaml
-kubectl apply -f observability/otel-service.yaml
-kubectl apply -f observability/jaeger-deployment.yaml
-kubectl apply -f observability/jaeger-service.yaml
-kubectl apply -f observability/prometheus-deployment.yaml
-kubectl apply -f observability/prometheus-service.yaml
+cd observability
+kubectl apply -f otel-collector.yaml
+kubectl apply -f otel-service.yaml
+kubectl apply -f jaeger-deployment.yaml
+kubectl apply -f jaeger-service.yaml
+kubectl apply -f prometheus-deployment.yaml
+kubectl apply -f prometheus-service.yaml
 ```
 
 ---
