@@ -1,0 +1,33 @@
+NAME                                   READY   STATUS    RESTARTS   AGE
+pod/hashing-service-6c99d8bb9b-j8rpr   1/1     Running   0          136m
+pod/jaeger-869d4f488f-vsmm6            1/1     Running   0          126m
+pod/length-service-85dcd8d85c-j8gbg    1/1     Running   0          144m
+pod/otel-collector-8c7d5c957-xv7r7     1/1     Running   0          115m
+pod/prometheus-98fdc5cf6-hjhj9         1/1     Running   0          106m
+
+NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)               AGE
+service/hashing-service   NodePort    10.99.217.240    <none>        8000:30080/TCP        5h11m
+service/jaeger            ClusterIP   10.111.112.234   <none>        16686/TCP,14268/TCP   126m
+service/kubernetes        ClusterIP   10.96.0.1        <none>        443/TCP               5h40m
+service/length-service    NodePort    10.103.89.81     <none>        8001:30081/TCP        5h9m
+service/otel-collector    ClusterIP   10.101.66.11     <none>        4317/TCP,4318/TCP     121m
+service/prometheus        ClusterIP   10.111.220.126   <none>        9090/TCP              105m
+
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/hashing-service   1/1     1            1           5h15m
+deployment.apps/jaeger            1/1     1            1           126m
+deployment.apps/length-service    1/1     1            1           5h10m
+deployment.apps/otel-collector    1/1     1            1           120m
+deployment.apps/prometheus        1/1     1            1           106m
+
+NAME                                         DESIRED   CURRENT   READY   AGE
+replicaset.apps/hashing-service-65f47585b    0         0         0       5h13m
+replicaset.apps/hashing-service-6c99d8bb9b   1         1         1       136m
+replicaset.apps/jaeger-869d4f488f            1         1         1       126m
+replicaset.apps/length-service-647856cf86    0         0         0       160m
+replicaset.apps/length-service-85dcd8d85c    1         1         1       144m
+replicaset.apps/length-service-86545577d7    0         0         0       5h10m
+replicaset.apps/length-service-9b74f869f     0         0         0       163m
+replicaset.apps/otel-collector-6fcc6654b6    0         0         0       120m
+replicaset.apps/otel-collector-8c7d5c957     1         1         1       115m
+replicaset.apps/prometheus-98fdc5cf6         1         1         1       106m
