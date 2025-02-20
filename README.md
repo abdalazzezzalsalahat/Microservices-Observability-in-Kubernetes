@@ -19,7 +19,7 @@ Both services are containerized and deployed on Kubernetes, integrated with a co
 - Jaeger for distributed tracing
 - Prometheus for metrics
 - OpenTelemetry for metrics and tracing collection
-- GitHub Actions (Optional - for CI/CD)
+- GitHub Actions
 
 ## Application Components
 
@@ -116,12 +116,6 @@ kubectl get services -A
 kubectl port-forward svc/jaeger-service 16686:16686 &  # Jaeger UI: <http://localhost:16686>
 kubectl port-forward svc/prometheus-service 9090:9090 & # Prometheus UI: <http://localhost:9090>
 ```
-
----
-
-![jaeger](Screenshot\ 2025-02-20\ 032803.png)
-
-![prometheus](Screenshot 2025-02-20 034725.png)
 
 #### 6. Test the Services
 
