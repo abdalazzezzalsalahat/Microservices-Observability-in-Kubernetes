@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: length-service-config
+data:
+  SERVICE_NAME: "length-service"
+  SERVICE_PORT: "8001"
+  LOG_LEVEL: "info"
+  JAEGER_HOST: "jaeger"
+  JAEGER_PORT: "6831"
